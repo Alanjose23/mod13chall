@@ -24,6 +24,9 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+  Category.create({category_name: req.body.category_name}).then((bookData) => {
+    res.json(bookData);
+  });
   // create a new category
 });
 
@@ -32,6 +35,15 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
+  Category.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((deletedBook) => {
+      res.json(deletedBook);
+    })
+    .catch((err) => res.json(err));
   // delete a category by its `id` value
 });
 
