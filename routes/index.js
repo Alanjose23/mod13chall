@@ -2,7 +2,7 @@ const router = require('express').Router();
 const apiRoutes = require('./api');
 
 router.use('/api', apiRoutes);
-
+// if wrong or incorrect route, go here
 router.use((req, res) => {
   res.send("<h1>Wrong Route!</h1>")
 });
